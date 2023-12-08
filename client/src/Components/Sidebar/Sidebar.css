@@ -1,51 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-.sidebar-container {
-    width: 250px;
-    height: 100vh;
-    background-color: #f9f9f9;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 .sidebar-header {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #444;
+  justify-content: start;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 40px;
+  color: #444;
+  align-self: flex-start;
+}
+
+.sidebar-container {
+  width: 250px;
+  height: 100vh;
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  padding: 20px;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sidebar-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .sidebar-item {
-    list-style-type: none;
-    cursor: pointer;
-    margin-bottom: 10px;
-    font-size: 16px;
+  list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 40px;
+  font-size: 16px;
+  padding-left: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+
 .sidebar-item.active {
-    background-color: #e8e8e8;
+  background-color: #e8e8e8;
 }
 
 .sidebar-link {
-    text-decoration: none;
-    color: #444;
-    display: flex;
-    align-items: center;
-    padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #444;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
 }
 
 .sidebar-link:hover {
-    background-color: #e8e8e8;
-    color: #000;
+  background-color: #e8e8e8;
+  color: #000;
+  border-radius: 10px;
 }
 
-.sidebar-link i {
-    font-size: 18px;
-    margin-right: 10px;
-    color: #444;
+.sidebar-link svg {
+  font-size: 30px;
+  margin-right: 30px;
+  color: #444;
 }
 
-.sidebar-item.active i {
-    color: #000;
+.sidebar-item.active svg {
+  color: #000;
 }
+
