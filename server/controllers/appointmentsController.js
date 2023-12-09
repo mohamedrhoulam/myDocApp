@@ -44,9 +44,11 @@ exports.getAppointmentsByStatus = async (req, res) => {
   );
   res.json(appointments);
 };
+
+//TODO: fix the function below (id should be a serial and not passed in)
 exports.createAppointment = async (req, res) => {
   const result = await db.query(
-    "INSERT INTO APPOINTMENT (apt_id, apt_date, apt_status, patient_id) VALUES ($1, $2, $3) RETURNING *", //fix the id
+    "INSERT INTO APPOINTMENT (apt_id, apt_date, apt_status, patient_id) VALUES ($1, $2, $3) RETURNING *",
     [req.body.apt_date, req.body.apt_status, req.body.apt_patientId],
   );
   const row = result.rows[0];
