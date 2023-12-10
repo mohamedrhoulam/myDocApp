@@ -3,10 +3,10 @@ import "./Sidebar.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from 'react-router-dom';
 
 library.add(fas);
 
-// TODO: Add the routes to the links
 function Sidebar() {
   return (
     <div className="sidebar-container">
@@ -14,34 +14,34 @@ function Sidebar() {
       <div className="sidebar-items">
         <ul>
           <li className="sidebar-item">
-            <a className="sidebar-link" href="/patients">
+            <Link className="sidebar-link" to="/patients">
               <FontAwesomeIcon icon="users" />
               <span>Patients</span>
-            </a>
+            </Link>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link" href="/patients">
+            <Link className="sidebar-link" to="/overview">
               <FontAwesomeIcon icon="ring" />
               <span>Overview</span>
-            </a>
+            </Link>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link" href="/histories">
+            <Link className="sidebar-link" to="/histories">
               <FontAwesomeIcon icon="file-alt" />
               <span>Histories</span>
-            </a>
+            </Link>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link" href="/appointments">
+            <Link className="sidebar-link" to="/appointments">
               <FontAwesomeIcon icon="calendar" />
               <span>Appointments</span>
-            </a>
+            </Link>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link" href="/settings">
+            <Link className="sidebar-link" to="/settings">
               <FontAwesomeIcon icon="cog" />
               <span>Settings</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
