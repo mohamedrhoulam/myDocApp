@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap");
+
+.appointments-container {
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 1000px;
+    margin: auto;
+}
+
+.appointment {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.appointment h2 {
+    font-size: 24px;
+    color: #4a90e2;
+    margin-bottom: 8px;
+}
+
+.appointment p {
+    font-size: 16px;
+    color: #4a90e2;
+}
+
+.appointment-details {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.appointment-details-item {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.appointment-icon {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    color: #4a90e2;
+}
+
+.appointment-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-bottom: 4px;
+}
+
+.appointment-label {
+    font-size: 16px;
+    color: #4a90e2;
+}
