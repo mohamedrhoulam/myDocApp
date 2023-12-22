@@ -6,13 +6,12 @@ export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    console.log(appointments)
     fetchAppointments();
-  }, [appointments]);
+  }, []);
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get("/api/appointments");
+      const response = await axios.get("http://localhost:5000/api/appointments");
       console.log(response.data); // Add this line
       setAppointments(response.data);
       console.log(appointments);
@@ -23,7 +22,7 @@ export default function Appointments() {
 
   const deleteAppointment = async (id) => {
     try {
-      await axios.delete(`/api/appointments/${id}`);
+      await axios.delete(`http://localhost:5000/api/appointments/${id}`);
       fetchAppointments(); // Refresh the appointments list after deletion
     } catch (error) {
       console.error("Failed to delete appointment:", error);
@@ -32,7 +31,7 @@ export default function Appointments() {
 
   const updateAppointment = async (id, updatedAppointment) => {
     try {
-      await axios.put(`/api/appointments/${id}`, updatedAppointment);
+      await axios.put(`http://localhost:5000/api/appointments/${id}`, updatedAppointment);
       fetchAppointments(); // Refresh the appointments list after update
     } catch (error) {
       console.error("Failed to update appointment:", error);
