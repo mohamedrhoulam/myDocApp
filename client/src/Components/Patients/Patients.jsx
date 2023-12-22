@@ -116,15 +116,60 @@ export default function Patients() {
       <table>
         <thead>
         <tr>
-          <th onClick={() => handleSort('patient_id')}>Patient ID</th>
-          <th onClick={() => handleSort('patient_fname')}>First Name</th>
-          <th onClick={() => handleSort('patient_lname')}>Last Name</th>
-          <th onClick={() => handleSort('patient_phoneNum')}>Phone Number</th>
-          <th onClick={() => handleSort('patient_sex')}>Sex</th>
-          <th onClick={() => handleSort('patient_email')}>Email</th>
-          <th onClick={() => handleSort('patient_cin')}>CIN</th>
-          <th onClick={() => handleSort('patient_city')}>City</th>
-          <th onClick={() => handleSort('patient_street')}>Street</th>
+          <th onClick={() => handleSort('patient_id')}>
+            Patient ID{' '}
+            {sortField === 'patient_id' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_fname')}>
+            First Name{' '}
+            {sortField === 'patient_fname' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_lname')}>
+            Last Name{' '}
+            {sortField === 'patient_lname' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_phoneNum')}>
+            Phone Number{' '}
+            {sortField === 'patient_phoneNum' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_sex')}>
+            Sex{' '}
+            {sortField === 'patient_sex' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_email')}>
+            Email{' '}
+            {sortField === 'patient_email' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_cin')}>
+            CIN{' '}
+            {sortField === 'patient_cin' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_city')}>
+            City{' '}
+            {sortField === 'patient_city' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
+          <th onClick={() => handleSort('patient_street')}>
+            Street{' '}
+            {sortField === 'patient_street' && (
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+            )}
+          </th>
           <th>Age</th>
           <th></th>
         </tr>
