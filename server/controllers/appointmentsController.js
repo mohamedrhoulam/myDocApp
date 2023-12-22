@@ -73,20 +73,25 @@ exports.getAppointmentsByStatus = async (req, res) => {
 exports.createAppointment = async (req, res) => {
   try {
     const result = await db.query(
-        "INSERT INTO APPOINTMENT (apt_date, apt_status, patient_id) VALUES ($1, $2, $3) RETURNING *",
-        [req.body.apt_date, req.body.apt_status, req.body.patient_id],
+      "INSERT INTO APPOINTMENT (apt_date, apt_status, patient_id) VALUES ($1, $2, $3) RETURNING *",
+      [req.body.apt_date, req.body.apt_status, req.body.patient_id],
     );
     const row = result.rows[0];
     const appointment = new Appointment(
-        row.apt_id,
-        row.apt_date,
-        row.apt_status,
-        row.patient_id,
+      row.apt_id,
+      row.apt_date,
+      row.apt_status,
+      row.patient_id,
     );
     res.json(appointment);
   } catch (error) {
-    console.error("Error creating appointment:", error);
-    res.status(500).json({ error: "Internal server error" });
+    if (error.message.includes('The number of appointments for the day has exceeded 5.')) {
+      // Send a response with a status code of 400 and a custom error message
+      res.status(400).json({ error: "The number of appointments for the day has exceeded 5." });
+    } else {
+      console.error("Error creating appointment:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
 };
 

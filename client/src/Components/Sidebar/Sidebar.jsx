@@ -14,21 +14,21 @@ function Sidebar() {
       <div className="sidebar-items">
         <ul>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/patients">
-              <FontAwesomeIcon icon="users" />
-              <span>Patients</span>
-            </Link>
-          </li>
-          <li className="sidebar-item">
             <Link className="sidebar-link" to="/overview">
               <FontAwesomeIcon icon="ring" />
               <span>Overview</span>
             </Link>
           </li>
           <li className="sidebar-item">
+            <Link className="sidebar-link" to="/patients">
+              <FontAwesomeIcon icon="users" />
+              <span>Patients</span>
+            </Link>
+          </li>
+          <li className="sidebar-item">
             <Link className="sidebar-link" to="/histories">
               <FontAwesomeIcon icon="file-alt" />
-              <span>Histories</span>
+              <span>Documents</span>
             </Link>
           </li>
           <li className="sidebar-item">

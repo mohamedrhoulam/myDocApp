@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import "./Appointments.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faEdit, faPlus, faSortUp, faSortDown} from '@fortawesome/free-solid-svg-icons';
+import "./Appointments.css";
 
 export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
