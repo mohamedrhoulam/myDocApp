@@ -14,6 +14,7 @@ export default function Patients() {
   const [isAddFormVisible, setIsAddFormVisible] = useState(false);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState(null);
+  const [patientAges, setPatientAges] = useState({});
 
   useEffect(() => {
     fetchPatients();
@@ -23,9 +24,15 @@ export default function Patients() {
     try {
       const response = await axios.get("http://localhost:5000/api/patients");
       setPatients(response.data);
+
+      const ages = {};
+      for (const patient of response.data) {
+        const ageResponse = await axios.get(`http://localhost:5000/api/patients/${patient.patient_id}/age`);
+        ages[patient.patient_id] = ageResponse.data.age;
+      }
+      setPatientAges(ages);
     } catch (error) {
       console.error("Failed to fetch patients:", error);
-      console.error("Error details:", error.response);
     }
   };
 
@@ -109,16 +116,16 @@ export default function Patients() {
       <table>
         <thead>
         <tr>
-          <th>Patient ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Phone Number</th>
-          <th>Date of Birth</th>
-          <th>Sex</th>
-          <th>Email</th>
-          <th>CIN</th>
-          <th>City</th>
-          <th>Street</th>
+          <th onClick={() => handleSort('patient_id')}>Patient ID</th>
+          <th onClick={() => handleSort('patient_fname')}>First Name</th>
+          <th onClick={() => handleSort('patient_lname')}>Last Name</th>
+          <th onClick={() => handleSort('patient_phoneNum')}>Phone Number</th>
+          <th onClick={() => handleSort('patient_sex')}>Sex</th>
+          <th onClick={() => handleSort('patient_email')}>Email</th>
+          <th onClick={() => handleSort('patient_cin')}>CIN</th>
+          <th onClick={() => handleSort('patient_city')}>City</th>
+          <th onClick={() => handleSort('patient_street')}>Street</th>
+          <th>Age</th>
           <th></th>
         </tr>
         </thead>
@@ -129,12 +136,12 @@ export default function Patients() {
             <td>{patient.patient_fname}</td>
             <td>{patient.patient_lname}</td>
             <td>{patient.patient_phoneNum}</td>
-            <td>{patient.patient_dateOfBirth}</td>
             <td>{patient.patient_sex}</td>
             <td>{patient.patient_email}</td>
             <td>{patient.patient_cin}</td>
             <td>{patient.patient_city}</td>
             <td>{patient.patient_street}</td>
+            <td>{patientAges[patient.patient_id]}</td>
             <td>
               <button onClick={() => deletePatient(patient.patient_id)}>
                 <FontAwesomeIcon icon={faTrashAlt}/>
@@ -163,24 +170,14 @@ export default function Patients() {
             <span className="close-button" onClick={() => setIsFormVisible(false)}>&times;</span>
             <h2>Update Patient</h2>
             <form onSubmit={handleUpdate}>
-              <input type="text" name="patient_fname" value={updatedPatient.patient_fname} onChange={handleInputChange}
-                     required/>
-              <input type="text" name="patient_lname" value={updatedPatient.patient_lname} onChange={handleInputChange}
-                     required/>
-              <input type="text" name="patient_phoneNum" value={updatedPatient.patient_phoneNum}
-                     onChange={handleInputChange} required/>
-              <input type="date" name="patient_dateOfBirth" value={updatedPatient.patient_dateOfBirth}
-                     onChange={handleInputChange} required/>
-              <input type="text" name="patient_sex" value={updatedPatient.patient_sex} onChange={handleInputChange}
-                     required/>
-              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange}
-                     required/>
-              <input type="text" name="patient_cin" value={updatedPatient.patient_cin} onChange={handleInputChange}
-                     required/>
-              <input type="text" name="patient_city" value={updatedPatient.patient_city} onChange={handleInputChange}
-                     required/>
-              <input type="text" name="patient_street" value={updatedPatient.patient_street}
-                     onChange={handleInputChange} required/>
+              <input type="text" name="patient_fname" value={updatedPatient.patient_fname} onChange={handleInputChange} placeholder="First Name" required className="form-input"/>
+              <input type="text" name="patient_lname" value={updatedPatient.patient_lname} onChange={handleInputChange} placeholder="Last Name" required className="form-input"/>
+              <input type="text" name="patient_phoneNum" value={updatedPatient.patient_phoneNum} onChange={handleInputChange} placeholder="Phone Number" required className="form-input"/>
+              <input type="text" name="patient_sex" value={updatedPatient.patient_sex} onChange={handleInputChange} placeholder="Sex" required className="form-input"/>
+              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange} placeholder="Email" required className="form-input"/>
+              <input type="text" name="patient_cin" value={updatedPatient.patient_cin} onChange={handleInputChange} placeholder="CIN" required className="form-input"/>
+              <input type="text" name="patient_city" value={updatedPatient.patient_city} onChange={handleInputChange} placeholder="City" required className="form-input"/>
+              <input type="text" name="patient_street" value={updatedPatient.patient_street} onChange={handleInputChange} placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -192,24 +189,13 @@ export default function Patients() {
             <span className="close-button" onClick={() => setIsAddFormVisible(false)}>&times;</span>
             <h2>Add Patient</h2>
             <form onSubmit={handleAdd}>
-              <input type="text" name="patient_fname" value={newPatient.patient_fname} onChange={handleNewInputChange}
-                     required/>
-              <input type="text" name="patient_lname" value={newPatient.patient_lname} onChange={handleNewInputChange}
-                     required/>
-              <input type="text" name="patient_phoneNum" value={newPatient.patient_phoneNum}
-                     onChange={handleNewInputChange} required/>
-              <input type="date" name="patient_dateOfBirth" value={newPatient.patient_dateOfBirth}
-                     onChange={handleNewInputChange} required/>
-              <input type="text" name="patient_sex" value={newPatient.patient_sex} onChange={handleNewInputChange}
-                     required/>
-              <input type="email" name="patient_email" value={newPatient.patient_email} onChange={handleNewInputChange}
-                     required/>
-              <input type="text" name="patient_cin" value={newPatient.patient_cin} onChange={handleNewInputChange}
-                     required/>
-              <input type="text" name="patient_city" value={newPatient.patient_city} onChange={handleNewInputChange}
-                     required/>
-              <input type="text" name="patient_street" value={newPatient.patient_street} onChange={handleNewInputChange}
-                     required/>
+              <input type="text" name="patient_fname" value={newPatient.patient_fname} onChange={handleNewInputChange} placeholder="First Name" required className="form-input"/>
+              <input type="text" name="patient_lname" value={newPatient.patient_lname} onChange={handleNewInputChange} placeholder="Last Name" required className="form-input"/>
+              <input type="text" name="patient_phoneNum" value={newPatient.patient_phoneNum} onChange={handleNewInputChange} placeholder="Phone Number" required className="form-input"/>
+              <input type="text" name="patient_sex" value={newPatient.patient_sex} onChange={handleNewInputChange} placeholder="Sex" required className="form-input"/>
+              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange} placeholder="Email" required className="form-input"/>              <input type="text" name="patient_cin" value={newPatient.patient_cin} onChange={handleNewInputChange} placeholder="CIN" required className="form-input"/>
+              <input type="text" name="patient_city" value={newPatient.patient_city} onChange={handleNewInputChange} placeholder="City" required className="form-input"/>
+              <input type="text" name="patient_street" value={newPatient.patient_street} onChange={handleNewInputChange} placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>
             </form>
           </div>

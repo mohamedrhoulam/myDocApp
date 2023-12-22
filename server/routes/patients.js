@@ -9,5 +9,6 @@ router.put("/:id", patientController.updatePatient);
 router.delete("/:id", patientController.deletePatient);
 router.get("/withAppointments", patientController.getPatientsWithAppointments);
 router.get("/withoutAppointments", patientController.getPatientsWithoutAppointments);
+router.get("/:id/age", patientController.getPatientAge);
 
 module.exports = router;

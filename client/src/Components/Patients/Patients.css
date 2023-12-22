@@ -22,7 +22,7 @@ table {
     border-spacing: 0;
     margin: 0 auto; /* Center the table horizontally */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -84,11 +84,12 @@ form {
 }
 
 form input[type="text"],
-form select {
+form select,
+form input[type="datetime-local"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 10px;
     margin-bottom: 10px;
     background: #f9f9f9;
     color: #333;
@@ -100,20 +101,9 @@ form input[type="text"]::placeholder {
 
 form input[type="text"]:focus,
 form select:focus,
-form input[type="datetime-local"]:focus { /* Add this line */
+form input[type="datetime-local"]:focus {
     border-color: #4a90e2;
     outline: none;
-}
-form input[type="text"],
-form select,
-form input[type="datetime-local"] { /* Add this line */
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background: #f9f9f9;
-    color: #333;
 }
 
 form button[type="submit"] {
@@ -121,14 +111,24 @@ form button[type="submit"] {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
 form button[type="submit"]:hover {
     background-color: #2171b3;
 }
+form button[type="submit"]:active {
+    background-color: #1a6b99;
+}
+form input[type="text"].error,
+form select.error,
+form input[type="datetime-local"].error {
+    border-color: #f44336;
+}
+
 
 .modal {
     position: fixed;
@@ -171,7 +171,7 @@ form button[type="submit"]:hover {
 
 .status {
     padding: 2px 5px;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-weight: bold;
 }
@@ -204,7 +204,7 @@ form button[type="submit"]:hover {
     border: none;
     padding: 10px 20px;
     margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     text-transform: uppercase;
 }
@@ -220,80 +220,13 @@ body {
     padding: 0;
 }
 
-.container {
-    display: flex;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-.sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar li {
-    margin-bottom: 10px;
-}
-
-.sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar a:hover {
-    background-color: #555;
-}
-
-/* Main Content Styles */
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-}
-
-.patients-table {
-    margin: 0 auto;
-    width: 80%;
-    border-collapse: collapse;
-}
-
-.patients-table th,
-.patients-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.patients-table th {
-    background-color: #4a90e2;
-    color: white;
-}
-
-.patients-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
 .add-button {
     align-self: flex-end; /* Align the button to the right */
     margin-bottom: 10px;
     margin-right: 5px;
     /*make the button thicker*/
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: none;
     background-color: #4a90e2;
     color: white;
@@ -314,4 +247,116 @@ table th svg {
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+/* Add Animations */
+.modal {
+    animation: fadeIn 0.5s;
+}
+
+.modal-content {
+    animation: slideIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px);}
+    to {transform: translateY(0);}
+}
+.form-input {
+    border: 1px solid #4a90e2;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Improve Button Styles */
+form button[type="submit"] {
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:active {
+    background-color: #1a6b99;
+}
+
+/* Add Validation Feedback */
+form input[type="text"].error,
+form select.error,
+form input[type="datetime-local"].error {
+    border-color: #f44336;
+}
+
+form .error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Improve Responsiveness */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+/* Add Animations */
+.modal {
+    animation: fadeIn 0.5s;
+}
+
+.modal-content {
+    animation: slideIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px);}
+    to {transform: translateY(0);}
+}
+/* Target the email input field */
+form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Placeholder color for email input */
+form input[type="email"]::placeholder {
+    color: #aaa;
+}
+
+/* Focus state for email input */
+form input[type="email"]:focus {
+    border-color: #4a90e2;
+    outline: none;
 }
