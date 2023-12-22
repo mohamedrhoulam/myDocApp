@@ -9,7 +9,7 @@ exports.getAllAppointments = async (req, res) => {
         row.apt_id,
         row.apt_date,
         row.apt_status,
-        row.apt_patientId,
+        row.patient_id,
       ),
   );
   res.json(appointments);
@@ -23,7 +23,7 @@ exports.getAppointmentById = async (req, res) => {
     row.apt_id,
     row.apt_date,
     row.apt_status,
-    row.apt_patientId,
+    row.patient_id,
   );
   res.json(appointment);
 };
@@ -39,7 +39,7 @@ exports.getAppointmentsByStatus = async (req, res) => {
         row.apt_id,
         row.apt_date,
         row.apt_status,
-        row.apt_patientId,
+        row.patient_id,
       ),
   );
   res.json(appointments);
@@ -49,7 +49,7 @@ exports.getAppointmentsByStatus = async (req, res) => {
 exports.createAppointment = async (req, res) => {
   const result = await db.query(
     "INSERT INTO APPOINTMENT (apt_id, apt_date, apt_status, patient_id) VALUES ($1, $2, $3) RETURNING *",
-    [req.body.apt_date, req.body.apt_status, req.body.apt_patientId],
+    [req.body.apt_date, req.body.apt_status, req.body.patient_id],
   );
   const row = result.rows[0];
   const appointment = new Appointment(
@@ -67,7 +67,7 @@ exports.updateAppointment = async (req, res) => {
     [
       req.body.apt_date,
       req.body.apt_status,
-      req.body.apt_patientId,
+      req.body.patient_id,
       req.params.id,
     ],
   );
@@ -76,7 +76,7 @@ exports.updateAppointment = async (req, res) => {
     row.apt_id,
     row.apt_date,
     row.apt_status,
-    row.apt_patientId,
+    row.patient_id,
   );
   res.json(appointment);
 };

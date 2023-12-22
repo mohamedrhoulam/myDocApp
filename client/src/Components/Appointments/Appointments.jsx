@@ -2,30 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Appointments.css";
 
-export default function Appointments({ onSearch }) {
+export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    console.log(appointments)
     fetchAppointments();
-  }, []);
+  }, [appointments]);
 
   const fetchAppointments = async () => {
     try {
       const response = await axios.get("/api/appointments");
+      console.log(response.data); // Add this line
       setAppointments(response.data);
+      console.log(appointments);
     } catch (error) {
       console.error("Failed to fetch appointments:", error);
-    }
-  };
-
-  const searchAppointments = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.get(`/api/appointments/search?term=${searchTerm}`);
-      setAppointments(response.data);
-    } catch (error) {
-      console.error("Failed to search appointments:", error);
     }
   };
 
@@ -47,35 +39,35 @@ export default function Appointments({ onSearch }) {
     }
   };
 
-  useEffect(() => {
-    if (onSearch) {
-      onSearch(searchAppointments);
-    }
-  }, [onSearch]);
-
   return (
-    <div className="appointments-container">
-      <h2>Upcoming Appointments</h2>
-      <form onSubmit={searchAppointments}>
-        <input
-          type="text"
-          placeholder="Search appointments"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-      <ul>
-        {appointments.map((appointment) => (
-          <li key={appointment.id}>
-            {appointment.name}
-            <button onClick={() => deleteAppointment(appointment.id)}>Delete</button>
-            <button onClick={() => updateAppointment(appointment.id, { name: "Updated Appointment" })}>
-              Update
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="appointments-container">
+        <h2>Upcoming Appointments</h2>
+        <table>
+          <thead>
+          <tr>
+            <th>Appointment ID</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Patient ID</th>
+          </tr>
+          </thead>
+          <tbody>
+          {appointments.map((appointment) => (
+              <tr key={appointment.apt_id}>
+                <td>{appointment.apt_id}</td>
+                <td>{appointment.apt_date}</td>
+                <td>{appointment.apt_status}</td>
+                <td>{appointment.patient_id}</td>
+                <td>
+                  <button onClick={() => deleteAppointment(appointment.apt_id)}>Delete</button>
+                  <button onClick={() => updateAppointment(appointment.apt_id, { name: "Updated Appointment" })}>
+                    Update
+                  </button>
+                </td>
+              </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
   );
 }
