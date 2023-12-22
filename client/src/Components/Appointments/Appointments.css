@@ -1,82 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap");
+/* Fonts import */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
-.appointments-container {
+/* Global styles */
+body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px; /* Set the width of your sidebar */
+    background-color: #333; /* Choose your sidebar's background color */
+    color: #fff; /* Choose your text color */
+    /* Add any other sidebar styles you need */
+}
+
+/* Main content styles */
+.main-content {
+    flex: 1; /* Expand to fill remaining space */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+/* Appointments container styles */
+.appointments-container {
     background: #f9f9f9;
     color: #333;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
-    margin: auto;
-}
-
-.appointment {
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.appointment h2 {
-    font-size: 24px;
-    color: #4a90e2;
-    margin-bottom: 8px;
-}
-
-.appointment p {
-    font-size: 16px;
-    color: #4a90e2;
-}
-
-.appointment-details {
+    margin: auto; /* Center the container */
     display: flex;
-    justify-content: space-between;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Adjust the width of the appointments container */
+    margin-top: 20px; /* Add margin to separate it from the sidebar */
 }
 
-.appointment-details-item {
-    text-align: center;
-    padding: 0 20px;
-}
-
-.appointment-icon {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 8px;
-    color: #4a90e2;
-}
-
-.appointment-number {
-    display: block;
-    font-size: 28px;
-    font-weight: bold;
-    color: #4a90e2;
-    margin-bottom: 4px;
-}
-
-.appointment-label {
-    font-size: 16px;
-    color: #4a90e2;
-}
-
+/* Table styles */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
+th,
+td {
+    border: none;
     text-align: left;
     padding: 16px;
+    transition: background-color 0.2s ease;
 }
 
 th {
@@ -88,20 +66,64 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+tr:hover {
+    background-color: #eaeaea;
+}
+
+/* Button styles */
 button {
-    background-color: #4a90e2;
-    color: white;
+    background-color: transparent;
+    color: #4a90e2;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    padding: 5px;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 button:hover {
+    color: #2171b3;
+}
+
+/* Adjust icon size */
+button i {
+    font-size: 18px;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif; /* Change font family */
+    font-weight: 300; /* Adjust font weight for a lighter style */
+    font-size: 24px; /* Adjust font size as needed */
+    color: #4a90e2; /* Text color */
+    margin-bottom: 8px;
+}
+
+/* Form styles */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+form button[type="submit"] {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+form button[type="submit"]:hover {
     background-color: #2171b3;
 }

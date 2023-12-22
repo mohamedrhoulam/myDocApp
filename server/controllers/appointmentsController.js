@@ -3,7 +3,11 @@ const Appointment = require("../models/Appointment");
 
 exports.getAllAppointments = async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM APPOINTMENT");
+    const result = await db.query(`
+      SELECT APPOINTMENT.*, PATIENT.patient_fname, PATIENT.patient_lname
+      FROM APPOINTMENT 
+      JOIN PATIENT ON APPOINTMENT.patient_id = PATIENT.patient_id
+    `);
     const appointments = result.rows.map(
         (row) =>
             new Appointment(
@@ -11,6 +15,8 @@ exports.getAllAppointments = async (req, res) => {
                 row.apt_date,
                 row.apt_status,
                 row.patient_id,
+                row.patient_fname,
+                row.patient_lname,
             ),
     );
     res.json(appointments);
@@ -86,12 +92,13 @@ exports.createAppointment = async (req, res) => {
 
 exports.updateAppointment = async (req, res) => {
   try {
+    const { apt_date, apt_status, patient_id } = req.body;
     const result = await db.query(
         "UPDATE APPOINTMENT SET apt_date = $1, apt_status = $2, patient_id = $3 WHERE apt_id = $4 RETURNING *",
         [
-          req.body.apt_date,
-          req.body.apt_status,
-          req.body.patient_id,
+          apt_date,
+          apt_status,
+          patient_id,
           req.params.id,
         ],
     );
