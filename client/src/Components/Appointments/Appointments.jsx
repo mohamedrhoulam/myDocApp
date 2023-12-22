@@ -41,10 +41,15 @@ export default function Appointments() {
     e.preventDefault();
     try {
       await axios.post(`http://localhost:5000/api/appointments`, newAppointment);
-      await fetchAppointments(); // Refresh the appointments list after adding
-      setIsAddFormVisible(false); // Hide the form
+      await fetchAppointments();
+      setIsAddFormVisible(false);
     } catch (error) {
-      console.error("Failed to add appointment:", error);
+      if (error.response && error.response.status === 400) {
+        // Display an alert to the user
+        alert(error.response.data.error);
+      } else {
+        console.error("Failed to add appointment:", error);
+      }
     }
   };
 

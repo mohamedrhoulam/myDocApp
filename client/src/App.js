@@ -14,7 +14,9 @@ function App() {
                 <div className="main-content">
                     <Routes>
                         <Route path="/appointments" element={<Appointments onSearch={setHandleSearch} />} />
+                        <Route path="/todaysappointments" element={<Appointments onSearch={setHandleSearch} />} />
                     </Routes>
+
                 </div>
             </div>
         </Router>
