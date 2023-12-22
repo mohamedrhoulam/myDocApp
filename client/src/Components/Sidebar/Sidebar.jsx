@@ -26,7 +26,7 @@ function Sidebar() {
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/histories">
+            <Link className="sidebar-link" to="/documents">
               <FontAwesomeIcon icon="file-alt" />
               <span>Documents</span>
             </Link>
