@@ -1,7 +1,6 @@
--- get patient age
-CREATE OR REPLACE FUNCTION get_patient_age(p_id integer) RETURNS integer
-    LANGUAGE plpgsql
-AS
+create function get_patient_age(p_id integer) returns integer
+    language plpgsql
+as
 $$
 DECLARE
     dob DATE;
@@ -12,4 +11,5 @@ BEGIN
     RETURN age;
 END; $$;
 
-ALTER FUNCTION get_patient_age(integer) OWNER TO postgres;
+alter function get_patient_age(integer) owner to postgres;
+
