@@ -302,3 +302,17 @@ body {
     position: relative;
     top: -40px;
 }
+
+table th {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Arrow styles */
+table th svg {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
