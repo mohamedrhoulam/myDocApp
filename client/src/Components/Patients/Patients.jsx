@@ -17,12 +17,14 @@ export default function Patients() {
   const [patientAges, setPatientAges] = useState({});
 
   useEffect(() => {
+
     fetchPatients();
   }, []);
 
   const fetchPatients = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/patients");
+      console.log(response.data); // Log the response data to the console
       setPatients(response.data);
 
       const ages = {};
@@ -67,12 +69,13 @@ export default function Patients() {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:5000/api/patients/${updatedPatient.patient_id}`, updatedPatient);
-      await fetchPatients();
+      await fetchPatients(); // Fetch updated data after successful update
       setIsFormVisible(false);
     } catch (error) {
       console.error("Failed to update patient:", error);
     }
   };
+
 
   const handleInputChange = (e) => {
     setUpdatedPatient({
@@ -135,12 +138,13 @@ export default function Patients() {
               <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
-          <th onClick={() => handleSort('patient_phoneNum')}>
+          <th onClick={() => handleSort('patient_phonenum')}>
             Phone Number{' '}
-            {sortField === 'patient_phoneNum' && (
+            {sortField === 'patient_phonenum' && (
               <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
+
           <th onClick={() => handleSort('patient_sex')}>
             Sex{' '}
             {sortField === 'patient_sex' && (
@@ -181,7 +185,7 @@ export default function Patients() {
             <td>{patient.patient_id}</td>
             <td>{patient.patient_fname}</td>
             <td>{patient.patient_lname}</td>
-            <td>{patient.patient_phoneNum}</td>
+            <td>{patient.patient_phonenum}</td> {/* Add this line */}
             <td>{patient.patient_sex}</td>
             <td>{patient.patient_email}</td>
             <td>{patient.patient_cin}</td>
@@ -223,23 +227,55 @@ export default function Patients() {
                      placeholder="First Name" required className="form-input"/>
               <input type="text" name="patient_lname" value={updatedPatient.patient_lname} onChange={handleInputChange}
                      placeholder="Last Name" required className="form-input"/>
-              <input type="text" name="patient_phoneNum" value={updatedPatient.patient_phoneNum}
-                     onChange={handleInputChange} placeholder="Phone Number" required className="form-input"/>
+
               <input type="text" name="patient_sex" value={updatedPatient.patient_sex} onChange={handleInputChange}
                      placeholder="Sex" required className="form-input"/>
               <input
                 type="date"
-                name="patient_dateOfBirth"
-                value={updatedPatient.patient_dateOfBirth || ''}
+                name="patient_dateofbirth"
+                value={updatedPatient.patient_dateofbirth || ''}
                 onChange={handleInputChange}
                 required
               />
-              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange}
-                     placeholder="Email" required className="form-input"/>
-              <input type="text" name="patient_cin" value={updatedPatient.patient_cin} onChange={handleInputChange}
-                     placeholder="CIN" required className="form-input"/>
-              <input type="text" name="patient_city" value={updatedPatient.patient_city} onChange={handleInputChange}
-                     placeholder="City" required className="form-input"/>
+
+              <input
+                type="email"
+                name="patient_email"
+                value={updatedPatient.patient_email}
+                onChange={handleNewInputChange}
+                placeholder="Email"
+                required
+                className="form-input"
+              />
+
+              <input
+                type="text"
+                name="patient_phonenum"
+                value={updatedPatient.patient_phonenum}
+                onChange={handleNewInputChange}
+                placeholder="Phone Number"
+                required
+                className="form-input"
+              />
+
+              <input
+                type="text"
+                name="patient_cin"
+                value={updatedPatient.patient_cin}
+                onChange={handleNewInputChange}
+                placeholder="CIN"
+                required
+                className="form-input"
+              />
+              <input
+                type="text"
+                name="patient_city"
+                value={updatedPatient.patient_city}
+                onChange={handleNewInputChange}
+                placeholder="City"
+                required
+                className="form-input"
+              />
               <input type="text" name="patient_street" value={updatedPatient.patient_street}
                      onChange={handleInputChange} placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>
@@ -257,22 +293,53 @@ export default function Patients() {
                      placeholder="First Name" required className="form-input"/>
               <input type="text" name="patient_lname" value={newPatient.patient_lname} onChange={handleNewInputChange}
                      placeholder="Last Name" required className="form-input"/>
-              <input type="text" name="patient_phoneNum" value={newPatient.patient_phoneNum}
-                     onChange={handleNewInputChange} placeholder="Phone Number" required className="form-input"/>
               <input type="text" name="patient_sex" value={newPatient.patient_sex} onChange={handleNewInputChange}
                      placeholder="Sex" required className="form-input"/>
               <input
                 type="date"
-                name="patient_dateOfBirth"
-                value={newPatient.patient_dateOfBirth || ''}
+                name="patient_dateofbirth"
+                value={newPatient.patient_dateofbirth || ''}
                 onChange={handleNewInputChange}
                 required
               />
-              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange}
-                     placeholder="Email" required className="form-input"/>
-              <input type="text" name="patient_cin" className="form-input" placeholder="CIN"/>
-              <input type="text" name="patient_city" value={newPatient.patient_city} onChange={handleNewInputChange}
-                     placeholder="City" required className="form-input"/>
+              <input
+                type="email"
+                name="patient_email"
+                value={newPatient.patient_email}
+                onChange={handleNewInputChange}
+                placeholder="Email"
+                required
+                className="form-input"
+              />
+
+              <input
+                type="text"
+                name="patient_phonenum"
+                value={newPatient.patient_phonenum}
+                onChange={handleInputChange}
+                placeholder="Phone Number"
+                required
+                className="form-input"
+              />
+
+              <input
+                type="text"
+                name="patient_cin"
+                value={newPatient.patient_cin}
+                onChange={handleNewInputChange}
+                placeholder="CIN"
+                required
+                className="form-input"
+              />
+              <input
+                type="text"
+                name="patient_city"
+                value={newPatient.patient_city}
+                onChange={handleNewInputChange}
+                placeholder="City"
+                required
+                className="form-input"
+              />
               <input type="text" name="patient_street" value={newPatient.patient_street} onChange={handleNewInputChange}
                      placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>

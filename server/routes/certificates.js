@@ -4,7 +4,7 @@ const certificatesController = require("../controllers/certificatesController");
 
 router.get("/", certificatesController.getAllCertificates);
 router.put("/", certificatesController.updateCertificate);
-router.delete("/:id", certificatesController.deleteCertificate);
 router.post("/", certificatesController.addCertificate);
+router.delete("/:id", certificatesController.deleteCertificate);
 
 module.exports = router;

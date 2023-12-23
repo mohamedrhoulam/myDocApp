@@ -10,8 +10,8 @@ exports.getAllPatients = async (req, res) => {
           row.patient_id,
           row.patient_fname,
           row.patient_lname,
-          row.patient_phoneNum,
-          row.patient_dateOfBirth,
+          row.patient_phonenum,
+          row.patient_datofbirth,
           row.patient_sex,
           row.patient_email,
           row.patient_cin,
@@ -39,8 +39,8 @@ exports.getPatientById = async (req, res) => {
       row.patient_id,
       row.patient_fname,
       row.patient_lname,
-      row.patient_phoneNum,
-      row.patient_dateOfBirth,
+      row.patient_phonenum,
+      row.patient_dateofbirth,
       row.patient_sex,
       row.patient_email,
       row.patient_cin,
@@ -59,8 +59,8 @@ exports.createPatient = async (req, res) => {
     const {
       patient_fname,
       patient_lname,
-      patient_phoneNum,
-      patient_dateOfBirth,
+      patient_phonenum,
+      patient_dateofbirth,
       patient_sex,
       patient_email,
       patient_cin,
@@ -68,16 +68,16 @@ exports.createPatient = async (req, res) => {
       patient_street
     } = req.body;
     const result = await db.query(
-      "INSERT INTO PATIENT (patient_fname, patient_lname, patient_phoneNum, patient_dateOfBirth, patient_sex, patient_email, patient_cin, patient_city, patient_street) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-      [patient_fname, patient_lname, patient_phoneNum, patient_dateOfBirth, patient_sex, patient_email, patient_cin, patient_city, patient_street],
+      "INSERT INTO PATIENT (patient_fname, patient_lname, patient_phonenum, patient_dateOfBirth, patient_sex, patient_email, patient_cin, patient_city, patient_street) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+      [patient_fname, patient_lname, patient_phonenum, patient_dateofbirth, patient_sex, patient_email, patient_cin, patient_city, patient_street],
     );
     const row = result.rows[0];
     const patient = new Patient(
       row.patient_id,
       row.patient_fname,
       row.patient_lname,
-      row.patient_phoneNum,
-      row.patient_dateOfBirth,
+      row.patient_phonenum,
+      row.patient_dateofbirth,
       row.patient_sex,
       row.patient_email,
       row.patient_cin,
@@ -96,8 +96,8 @@ exports.updatePatient = async (req, res) => {
     const {
       patient_fname,
       patient_lname,
-      patient_phoneNum,
-      patient_dateOfBirth,
+      patient_phonenum,
+      patient_dateofbirth,
       patient_sex,
       patient_email,
       patient_cin,
@@ -105,16 +105,16 @@ exports.updatePatient = async (req, res) => {
       patient_street
     } = req.body;
     const result = await db.query(
-      "UPDATE PATIENT SET patient_fname = $1, patient_lname = $2, patient_phoneNum = $3, patient_dateOfBirth = $4, patient_sex = $5, patient_email = $6, patient_cin = $7, patient_city = $8, patient_street = $9 WHERE patient_id = $10 RETURNING *",
-      [patient_fname, patient_lname, patient_phoneNum, patient_dateOfBirth, patient_sex, patient_email, patient_cin, patient_city, patient_street, req.params.id],
+      "UPDATE PATIENT SET patient_fname = $1, patient_lname = $2, patient_phonenum = $3, patient_dateofbirth = $4, patient_sex = $5, patient_email = $6, patient_cin = $7, patient_city = $8, patient_street = $9 WHERE patient_id = $10 RETURNING *",
+      [patient_fname, patient_lname, patient_phonenum, patient_dateofbirth, patient_sex, patient_email, patient_cin, patient_city, patient_street, req.params.id],
     );
     const row = result.rows[0];
     const patient = new Patient(
       row.patient_id,
       row.patient_fname,
       row.patient_lname,
-      row.patient_phoneNum,
-      row.patient_dateOfBirth,
+      row.patient_phonenum,
+      row.patient_dateofbirth,
       row.patient_sex,
       row.patient_email,
       row.patient_cin,
@@ -151,8 +151,8 @@ exports.getPatientsWithAppointments = async (req, res) => {
           row.patient_id,
           row.patient_fname,
           row.patient_lname,
-          row.patient_phoneNum,
-          row.patient_dateOfBirth,
+          row.patient_phonenum,
+          row.patient_dateofbirth,
           row.patient_sex,
           row.patient_email,
           row.patient_cin,
@@ -181,8 +181,8 @@ exports.getPatientsWithoutAppointments = async (req, res) => {
           row.patient_id,
           row.patient_fname,
           row.patient_lname,
-          row.patient_phoneNum,
-          row.patient_dateOfBirth,
+          row.patient_phonenum,
+          row.patient_dateofbirth,
           row.patient_sex,
           row.patient_email,
           row.patient_cin,
