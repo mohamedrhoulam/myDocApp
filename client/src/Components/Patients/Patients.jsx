@@ -105,7 +105,8 @@ export default function Patients() {
     return 0;
   });
   const currentItems = sortedPatients.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
+  const itemsBeingShown = currentItems.length;
+  const renderItemsMessage = `Showing ${itemsBeingShown} item${itemsBeingShown === 1 ? '' : 's'} out of ${patients.length} total`
   return (
     <div className="patients-container">
       <h2>Patients</h2>
@@ -208,6 +209,9 @@ export default function Patients() {
             {index + 1}
           </button>
         ))}
+        <div className="item-message">
+          {renderItemsMessage}
+        </div>
       </div>
       {isFormVisible && (
         <div className="modal">
@@ -276,6 +280,7 @@ export default function Patients() {
           </div>
         </div>
       )}
+
     </div>
   );
 }

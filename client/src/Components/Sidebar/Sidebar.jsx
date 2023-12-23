@@ -22,7 +22,7 @@ function Sidebar() {
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/patients">
               <FontAwesomeIcon icon="users" />
-              <span>Patients</span>
+              <span>My Patients</span>
             </Link>
           </li>
           <li className="sidebar-item">
@@ -38,9 +38,9 @@ function Sidebar() {
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/settings">
+            <Link className="sidebar-link" to="/employees">
               <FontAwesomeIcon icon="cog" />
-              <span>Settings</span>
+              <span>My Staff</span>
             </Link>
           </li>
         </ul>

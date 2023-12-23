@@ -199,7 +199,7 @@ form input[type="datetime-local"].error {
 
 .pagination button {
     background-color: #4a90e2;
-    color: #fff;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     margin: 0 5px;
@@ -208,8 +208,16 @@ form input[type="datetime-local"].error {
     text-transform: uppercase;
 }
 
+
 .pagination button:hover {
     background-color: #2171b3;
+}
+.item-message {
+    color: #aaa;
+    /* make it aligned with the page button*/
+    margin-top: 9px;
+    margin-left: 4px;
+
 }
 
 
