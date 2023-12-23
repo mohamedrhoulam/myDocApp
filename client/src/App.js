@@ -17,7 +17,6 @@ function App() {
             <Route path="/appointments" element={<Appointments onSearch={setHandleSearch}/>}/>
             <Route path="/patients" element={<Patients/>}/>
             <Route path="/documents" element={<Documents/>}/>
-            // overview
           </Routes>
         </div>
       </div>

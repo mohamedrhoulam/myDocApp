@@ -119,55 +119,55 @@ export default function Patients() {
           <th onClick={() => handleSort('patient_id')}>
             Patient ID{' '}
             {sortField === 'patient_id' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_fname')}>
             First Name{' '}
             {sortField === 'patient_fname' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_lname')}>
             Last Name{' '}
             {sortField === 'patient_lname' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_phoneNum')}>
             Phone Number{' '}
             {sortField === 'patient_phoneNum' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_sex')}>
             Sex{' '}
             {sortField === 'patient_sex' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_email')}>
             Email{' '}
             {sortField === 'patient_email' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_cin')}>
             CIN{' '}
             {sortField === 'patient_cin' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_city')}>
             City{' '}
             {sortField === 'patient_city' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th onClick={() => handleSort('patient_street')}>
             Street{' '}
             {sortField === 'patient_street' && (
-              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown} />
+              <FontAwesomeIcon icon={sortDirection === 'asc' ? faSortUp : faSortDown}/>
             )}
           </th>
           <th>Age</th>
@@ -215,14 +215,29 @@ export default function Patients() {
             <span className="close-button" onClick={() => setIsFormVisible(false)}>&times;</span>
             <h2>Update Patient</h2>
             <form onSubmit={handleUpdate}>
-              <input type="text" name="patient_fname" value={updatedPatient.patient_fname} onChange={handleInputChange} placeholder="First Name" required className="form-input"/>
-              <input type="text" name="patient_lname" value={updatedPatient.patient_lname} onChange={handleInputChange} placeholder="Last Name" required className="form-input"/>
-              <input type="text" name="patient_phoneNum" value={updatedPatient.patient_phoneNum} onChange={handleInputChange} placeholder="Phone Number" required className="form-input"/>
-              <input type="text" name="patient_sex" value={updatedPatient.patient_sex} onChange={handleInputChange} placeholder="Sex" required className="form-input"/>
-              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange} placeholder="Email" required className="form-input"/>
-              <input type="text" name="patient_cin" value={updatedPatient.patient_cin} onChange={handleInputChange} placeholder="CIN" required className="form-input"/>
-              <input type="text" name="patient_city" value={updatedPatient.patient_city} onChange={handleInputChange} placeholder="City" required className="form-input"/>
-              <input type="text" name="patient_street" value={updatedPatient.patient_street} onChange={handleInputChange} placeholder="Street" required className="form-input"/>
+              <input type="text" name="patient_fname" value={updatedPatient.patient_fname} onChange={handleInputChange}
+                     placeholder="First Name" required className="form-input"/>
+              <input type="text" name="patient_lname" value={updatedPatient.patient_lname} onChange={handleInputChange}
+                     placeholder="Last Name" required className="form-input"/>
+              <input type="text" name="patient_phoneNum" value={updatedPatient.patient_phoneNum}
+                     onChange={handleInputChange} placeholder="Phone Number" required className="form-input"/>
+              <input type="text" name="patient_sex" value={updatedPatient.patient_sex} onChange={handleInputChange}
+                     placeholder="Sex" required className="form-input"/>
+              <input
+                type="date"
+                name="patient_dateOfBirth"
+                value={updatedPatient.patient_dateOfBirth || ''}
+                onChange={handleInputChange}
+                required
+              />
+              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange}
+                     placeholder="Email" required className="form-input"/>
+              <input type="text" name="patient_cin" value={updatedPatient.patient_cin} onChange={handleInputChange}
+                     placeholder="CIN" required className="form-input"/>
+              <input type="text" name="patient_city" value={updatedPatient.patient_city} onChange={handleInputChange}
+                     placeholder="City" required className="form-input"/>
+              <input type="text" name="patient_street" value={updatedPatient.patient_street}
+                     onChange={handleInputChange} placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -234,13 +249,28 @@ export default function Patients() {
             <span className="close-button" onClick={() => setIsAddFormVisible(false)}>&times;</span>
             <h2>Add Patient</h2>
             <form onSubmit={handleAdd}>
-              <input type="text" name="patient_fname" value={newPatient.patient_fname} onChange={handleNewInputChange} placeholder="First Name" required className="form-input"/>
-              <input type="text" name="patient_lname" value={newPatient.patient_lname} onChange={handleNewInputChange} placeholder="Last Name" required className="form-input"/>
-              <input type="text" name="patient_phoneNum" value={newPatient.patient_phoneNum} onChange={handleNewInputChange} placeholder="Phone Number" required className="form-input"/>
-              <input type="text" name="patient_sex" value={newPatient.patient_sex} onChange={handleNewInputChange} placeholder="Sex" required className="form-input"/>
-              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange} placeholder="Email" required className="form-input"/>              <input type="text" name="patient_cin" value={newPatient.patient_cin} onChange={handleNewInputChange} placeholder="CIN" required className="form-input"/>
-              <input type="text" name="patient_city" value={newPatient.patient_city} onChange={handleNewInputChange} placeholder="City" required className="form-input"/>
-              <input type="text" name="patient_street" value={newPatient.patient_street} onChange={handleNewInputChange} placeholder="Street" required className="form-input"/>
+              <input type="text" name="patient_fname" value={newPatient.patient_fname} onChange={handleNewInputChange}
+                     placeholder="First Name" required className="form-input"/>
+              <input type="text" name="patient_lname" value={newPatient.patient_lname} onChange={handleNewInputChange}
+                     placeholder="Last Name" required className="form-input"/>
+              <input type="text" name="patient_phoneNum" value={newPatient.patient_phoneNum}
+                     onChange={handleNewInputChange} placeholder="Phone Number" required className="form-input"/>
+              <input type="text" name="patient_sex" value={newPatient.patient_sex} onChange={handleNewInputChange}
+                     placeholder="Sex" required className="form-input"/>
+              <input
+                type="date"
+                name="patient_dateOfBirth"
+                value={newPatient.patient_dateOfBirth || ''}
+                onChange={handleNewInputChange}
+                required
+              />
+              <input type="email" name="patient_email" value={updatedPatient.patient_email} onChange={handleInputChange}
+                     placeholder="Email" required className="form-input"/>
+              <input type="text" name="patient_cin" className="form-input" placeholder="CIN"/>
+              <input type="text" name="patient_city" value={newPatient.patient_city} onChange={handleNewInputChange}
+                     placeholder="City" required className="form-input"/>
+              <input type="text" name="patient_street" value={newPatient.patient_street} onChange={handleNewInputChange}
+                     placeholder="Street" required className="form-input"/>
               <button type="submit">Submit</button>
             </form>
           </div>

@@ -218,7 +218,7 @@ export default function Appointments() {
                 <option value="Ongoing">Ongoing</option>
               </select>
               <input type="text" name="patient_id" value={updatedAppointment.patient_id} onChange={handleInputChange}
-                     required/>
+                     placeholder="Patient ID" required/>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -240,7 +240,7 @@ export default function Appointments() {
                 <option value="Ongoing">Ongoing</option>
               </select>
               <input type="text" name="patient_id" value={newAppointment.patient_id} onChange={handleNewInputChange}
-                     required/>
+                     placeholder="Patient ID" required/>
               <button type="submit">Submit</button>
             </form>
           </div>
