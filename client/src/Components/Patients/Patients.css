@@ -10,14 +10,13 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
     margin: auto;
-    width: 80%;
+    width: 100%;
 }
 
 table {
     font-family: 'Roboto', sans-serif;
-    width: 90%; /* Adjust the width of the table */
+    width: 100%; /* Adjust the width of the table */
     border-collapse: separate;
     border-spacing: 0;
     margin: 0 auto; /* Center the table horizontally */
@@ -357,6 +356,28 @@ form input[type="email"]::placeholder {
 
 /* Focus state for email input */
 form input[type="email"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+/* Target the date input field */
+form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Placeholder color for date input */
+form input[type="date"]::placeholder {
+    color: #aaa;
+}
+
+/* Focus state for date input */
+form input[type="date"]:focus {
     border-color: #4a90e2;
     outline: none;
 }
