@@ -38,17 +38,6 @@ exports.updateCertificate = async (req, res) => {
   }
 };
 
-// deleteCertificate
-exports.deleteCertificate = async (req, res) => {
-  const { doc_id } = req.params;
-  try {
-    await db.query("DELETE FROM certificate WHERE doc_id = $1", [doc_id]);
-    res.json({ message: "Appointment deleted" });
-  } catch (error) {
-    console.error("Error deleting certificate:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
 
 // addCertificate
 exports.addCertificate = async (req, res) => {
@@ -73,3 +62,30 @@ exports.addCertificate = async (req, res) => {
   }
 };
 
+// deleteCertificate
+// deleteCertificate
+exports.deleteCertificate = async (req, res) => {
+  try {
+    const { doc_id } = req.params;
+    if (!doc_id) {
+      throw new Error("doc_id is undefined");
+    }
+
+    await db.query("DELETE FROM certificate WHERE doc_id = $1", [doc_id]);
+    await db.query("DELETE FROM document WHERE doc_id = $1", [doc_id]);
+
+    // Query the database for the document
+    const result = await db.query("SELECT * FROM document WHERE doc_id = $1", [doc_id]);
+    if (result.rows.length > 0) {
+      // The document was not deleted
+      console.error("Error deleting document: The document was not deleted from the database");
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      // The document was deleted
+      res.json({ message: "The file has been deleted" });
+    }
+  } catch (error) {
+    console.error("Error deleting certificate:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
