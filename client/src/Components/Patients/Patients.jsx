@@ -3,7 +3,7 @@ import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt, faEdit, faPlus, faSortUp, faSortDown} from "@fortawesome/free-solid-svg-icons";
 import "./Patients.css";
-
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 export default function Patients() {
   const [patients, setPatients] = useState([]);
   const [updatedPatient, setUpdatedPatient] = useState({});
@@ -15,10 +15,27 @@ export default function Patients() {
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState(null);
   const [patientAges, setPatientAges] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchPatients();
   }, []);
+
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    // Filter patients by searchQuery
+    const filteredPatients = patients.filter(patient => patient.patient_id.toString() === searchQuery);
+    setPatients(filteredPatients);
+  };
+
+  const handleResetSearch = () => {
+    // Reset the search and display all patients
+    setSearchQuery('');
+    fetchPatients();
+  };
 
   const fetchPatients = async () => {
     try {
@@ -109,6 +126,20 @@ export default function Patients() {
   return (
     <div className="patients-container">
       <h2>Patients</h2>
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+          placeholder="Search by Patient ID"
+        />
+        <button onClick={handleSearch}>
+          <FontAwesomeIcon icon={faSearch}/>
+        </button>
+        <button onClick={handleResetSearch}>
+          <FontAwesomeIcon icon={faTimes}/>
+        </button>
+      </div>
       <button className="add-button" onClick={() => setIsAddFormVisible(true)}>
         <FontAwesomeIcon icon={faPlus} size="lg"/>
         Add Patient
