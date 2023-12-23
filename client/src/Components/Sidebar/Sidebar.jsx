@@ -25,12 +25,7 @@ function Sidebar() {
               <span>My Patients</span>
             </Link>
           </li>
-          <li className="sidebar-item">
-            <Link className="sidebar-link" to="/documents">
-              <FontAwesomeIcon icon="file-alt" />
-              <span>Documents</span>
-            </Link>
-          </li>
+
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/appointments">
               <FontAwesomeIcon icon="calendar" />
@@ -41,6 +36,18 @@ function Sidebar() {
             <Link className="sidebar-link" to="/employees">
               <FontAwesomeIcon icon="cog" />
               <span>My Staff</span>
+            </Link>
+          </li>
+          <li className="sidebar-item">
+            <Link className="sidebar-link" to="/stock">
+              <FontAwesomeIcon icon="file-alt" />
+              <span>My Stock</span>
+            </Link>
+          </li>
+          <li className="sidebar-item">
+            <Link className="sidebar-link" to="/documents">
+              <FontAwesomeIcon icon="file-alt" />
+              <span>Documents</span>
             </Link>
           </li>
         </ul>

@@ -3,9 +3,10 @@ import React, {useState} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Appointments from "./Components/Appointments/Appointments";
-import Patients from "./Components/Patients/Patients"; // Import the Patients component
+import Patients from "./Components/Patients/Patients";
 import Documents from "./Components/Documents/Documents";
 import Employees from "./Components/Employees/Employees";
+import Stock from "./Components/Stock/Stock";
 function App() {
   const [handleSearch, setHandleSearch] = useState(null);
 
