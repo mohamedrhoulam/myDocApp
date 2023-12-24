@@ -7,6 +7,7 @@ import Patients from "./Components/Patients/Patients";
 import Documents from "./Components/Documents/Documents";
 import Employees from "./Components/Employees/Employees";
 import Stock from "./Components/Stock/Stock";
+import Overview from "./Components/Overview/Overview";
 function App() {
   const [handleSearch, setHandleSearch] = useState(null);
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/documents" element={<Documents/>}/>
             <Route path="/employees" element={<Employees/>}/>
             <Route path="/stock" element={<Stock/>}/>
+            <Route path="/overview" element={<Overview/>}/>
           </Routes>
         </div>
       </div>

@@ -1,14 +1,75 @@
 /* Overview.css */
 
-.overview-container {
-  display: flex;
-  justify-content: space-between;
+/* Ensure a more modern layout and spacing */
+.appointments-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
-.overview-container .Sidebar {
-  flex: 1;
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.overview-container .TodaysAppointments {
-  flex: 3;
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #4a90e2;
+}
+
+/* Highlight rows on hover */
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Style the total appointments section */
+.total-appointments {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.total-appointments h2 {
+  margin: 0;
+  font-weight: 300;
+  color: #4a90e2;
+}
+.total-appointments strong {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.total-appointments .status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+.welcome-message {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.welcome-message h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.welcome-message p {
+  margin-top: 10px;
+  font-size: 1.2em;
 }

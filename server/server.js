@@ -9,6 +9,8 @@ const patients = require("./routes/patients");
 const prescriptionsRouter = require("./routes/prescriptions");
 const certificatesRouter = require("./routes/certificates");
 const employeesRouter = require("./routes/employees");
+const medicineRoutes = require('./routes/medicine');
+const providerRoutes = require('./routes/provider');
 
 
 app.use(cors()); // Use cors middleware here
@@ -19,6 +21,11 @@ app.use("/api/patients", patients);
 app.use("/api/prescriptions", prescriptionsRouter);
 app.use("/api/certificates", certificatesRouter);
 app.use("/api/employees", employeesRouter);
+app.use('/api/medicines', medicineRoutes);
+app.use("/api/providers", require("./routes/provider"));
+
+
+
 
 
 
