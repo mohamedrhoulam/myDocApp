@@ -114,7 +114,7 @@ export default function Patients() {
     <div className="patients-container">
       <h2>Patients</h2>
       <button className="add-button" onClick={() => setIsAddFormVisible(true)}>
-        <FontAwesomeIcon icon={faPlus} size="lg"/>
+        <FontAwesomeIcon icon="fas fa-users-medical" />
         Add Patient
       </button>
       <table>
@@ -316,7 +316,7 @@ export default function Patients() {
                 type="text"
                 name="patient_phonenum"
                 value={newPatient.patient_phonenum}
-                onChange={handleInputChange}
+                onChange={handleNewInputChange}
                 placeholder="Phone Number"
                 required
                 className="form-input"

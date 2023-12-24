@@ -40,8 +40,7 @@ function Sidebar() {
           </li>
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/stock">
-              <FontAwesomeIcon icon="file-alt" />
-              <span>My Stock</span>
+              <FontAwesomeIcon icon="fa-solid fa-pills" />              <span>My Stock</span>
             </Link>
           </li>
           <li className="sidebar-item">
