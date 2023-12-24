@@ -14,23 +14,18 @@ function Sidebar() {
       <div className="sidebar-items">
         <ul>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/patients">
-              <FontAwesomeIcon icon="users" />
-              <span>Patients</span>
-            </Link>
-          </li>
-          <li className="sidebar-item">
             <Link className="sidebar-link" to="/overview">
               <FontAwesomeIcon icon="ring" />
               <span>Overview</span>
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/histories">
-              <FontAwesomeIcon icon="file-alt" />
-              <span>Histories</span>
+            <Link className="sidebar-link" to="/patients">
+              <FontAwesomeIcon icon="users" />
+              <span>My Patients</span>
             </Link>
           </li>
+
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/appointments">
               <FontAwesomeIcon icon="calendar" />
@@ -38,9 +33,20 @@ function Sidebar() {
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/settings">
+            <Link className="sidebar-link" to="/employees">
               <FontAwesomeIcon icon="cog" />
-              <span>Settings</span>
+              <span>My Staff</span>
+            </Link>
+          </li>
+          <li className="sidebar-item">
+            <Link className="sidebar-link" to="/stock">
+              <FontAwesomeIcon icon="fa-solid fa-pills" />              <span>My Stock</span>
+            </Link>
+          </li>
+          <li className="sidebar-item">
+            <Link className="sidebar-link" to="/documents">
+              <FontAwesomeIcon icon="file-alt" />
+              <span>Documents</span>
             </Link>
           </li>
         </ul>

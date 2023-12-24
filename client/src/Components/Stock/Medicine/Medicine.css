@@ -1,0 +1,40 @@
+/* Stock.css */
+.medicine-provider-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.medicine-provider-container > div {
+    width: 49%;
+}
+/* Medicine.css */
+
+/* Medicine.css */
+
+.medicines-container label {
+    font-size: 0.8em;
+    color: grey;
+    background-color: transparent; /* Add this line */
+}
+
+/* Medicine.css */
+
+
+.medicines-container .button-container .button-group {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.medicines-container .button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.medicines-container .button-container button:hover {
+    background-color: #0056b3;
+}

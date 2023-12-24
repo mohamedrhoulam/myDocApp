@@ -1,0 +1,25 @@
+.page-number-button {
+    background-color: #f8f9fa;
+    border: none;
+    color: #343a40;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-number-button:hover {
+    background-color: #343a40;
+    color: white;
+}
+
+.item-message {
+    color: #aaa;
+    margin-top: 9px;
+    margin-left: 4px;
+
+}

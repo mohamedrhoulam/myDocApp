@@ -1,34 +1,75 @@
-.overview-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Overview.css */
+
+/* Ensure a more modern layout and spacing */
+.appointments-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Style the table */
+table {
   width: 100%;
-  height: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #4a90e2;
+}
+
+/* Highlight rows on hover */
+tbody tr:hover {
   background-color: #f9f9f9;
 }
 
-.search-bar {
-  width: 100%;
+/* Style the total appointments section */
+.total-appointments {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 15px;
   margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
-
-.add-patient-button {
+.total-appointments h2 {
+  margin: 0;
+  font-weight: 300;
+  color: #4a90e2;
+}
+.total-appointments strong {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.total-appointments .status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+.welcome-message {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.analytics-container {
-  width: 100%;
-  margin-bottom: 20px;
+.welcome-message h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 500;
 }
 
-.sidebar-container {
-  width: 250px;
-  height: 100%;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
-}
-
-.appointments-container {
-  width: 100%;
-  margin-top: 20px;
+.welcome-message p {
+  margin-top: 10px;
+  font-size: 1.2em;
 }
