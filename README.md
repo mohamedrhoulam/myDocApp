@@ -17,7 +17,8 @@
     npm install
     ```
 - Create a new database and run the sql scripts found in the server direcory
-- run the server and the front end.
+- you will also need to create a file for your postgres database and an env file
+- run the server and the front end, I will try to make all these steps run i a script later
   
 
 
